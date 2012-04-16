@@ -156,7 +156,7 @@ int Master::Run()
         return 1;
 
     // set server offline (not connectable)
-    LoginDatabase.DirectPExecute("UPDATE realmlist SET color = (color & ~%u) | %u WHERE id = '%d'", REALM_color_OFFLINE, REALM_color_INVALID, realmID);
+    LoginDatabase.DirectPExecute("UPDATE realmlist SET color = (color & ~%u) | %u WHERE id = '%d'", REALM_FLAG_OFFLINE, REALM_FLAG_INVALID, realmID);
 
     ///- Initialize the World
     sWorld->SetInitialWorldSettings();
