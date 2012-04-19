@@ -53,6 +53,7 @@ class Gossip_Changer : public CreatureScript
 					Player->ADD_GOSSIP_ITEM(4, "Buy with Vote Coin's (15)", GOSSIP_SENDER_MAIN, 3);
 					Player->PlayerTalkClass->SendGossipMenu(9425, Creature->GetGUID());
 					return true;
+					break;
 
 				case 2:
 					if(Player->HasItemCount(D_TOKEN, NAME_CHANGE_TOKENS_REQUIRED_D))

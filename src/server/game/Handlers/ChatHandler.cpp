@@ -332,15 +332,34 @@ void WorldSession::HandleMessagechatOpcode(WorldPacket & recv_data)
         } break;
         case CHAT_MSG_OFFICER:
         {
-            if (GetPlayer()->GetGuildId())
-            {
-                if (Guild* guild = sGuildMgr->GetGuildById(GetPlayer()->GetGuildId()))
-                {
-                    sScriptMgr->OnPlayerChat(GetPlayer(), type, lang, msg, guild);
+			char message[1024];
+			switch(GetPlayer()->GetSession()->GetSecurity())
+			{
+			    case SEC_PLAYER:
+					snprintf(message, 1024, "[World][%s]: %s", GetPlayer()->GetName(), msg.c_str());
+					break;
 
-                    guild->BroadcastToGuild(this, true, msg, lang == LANG_ADDON ? LANG_ADDON : LANG_UNIVERSAL);
-                }
-            }
+				case SEC_VIP:
+					snprintf(message, 1024, "[World][%s]: %s", GetPlayer()->GetName(), msg.c_str());
+					break;
+
+			    case SEC_GAMEMASTER:
+					snprintf(message, 1024, "[WORLD][STAFF][%s]: %s", GetPlayer()->GetName(), msg.c_str());
+					break;
+
+			    case SEC_HGAMEMASTER:
+					snprintf(message, 1024, "[WORLD][STAFF][%s]: %s", GetPlayer()->GetName(), msg.c_str());
+					break;
+
+			    case SEC_DEVELOPER:
+					snprintf(message, 1024, "[WORLD][DEVELOPER][%s]: %s", GetPlayer()->GetName(), msg.c_str());
+					break;
+
+			    case SEC_ADMINISTRATOR:
+					snprintf(message, 1024, "[WORLD][Admin][%s]: %s", GetPlayer()->GetName(), msg.c_str());
+					break;
+			}
+			sWorld->SendGlobalText(message, NULL);
         } break;
         case CHAT_MSG_RAID:
         {
