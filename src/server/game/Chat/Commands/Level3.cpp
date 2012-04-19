@@ -3766,10 +3766,14 @@ bool ChatHandler::HandleServerPLimitCommand(const char *args)
 
         if (strncmp(param, "player", l) == 0)
             sWorld->SetPlayerSecurityLimit(SEC_PLAYER);
-        else if (strncmp(param, "moderator", l) == 0)
-            sWorld->SetPlayerSecurityLimit(SEC_MODERATOR);
-        else if (strncmp(param, "gamemaster", l) == 0)
-            sWorld->SetPlayerSecurityLimit(SEC_GAMEMASTER);
+        else if (strncmp(param, "VIP", l) == 0)
+            sWorld->SetPlayerSecurityLimit(SEC_VIP);
+		else if (strncmp(param, "Gamemaster", 1) ==0)
+			sWorld->SetPlayerSecurityLimit(SEC_GAMEMASTER);
+        else if (strncmp(param, "head gamemaster", l) == 0)
+            sWorld->SetPlayerSecurityLimit(SEC_HGAMEMASTER);
+		else if (strncmp(param, "Developer", 1) == 0)
+			sWorld->SetPlayerSecurityLimit(SEC_DEVELOPER);
         else if (strncmp(param, "administrator", l) == 0)
             sWorld->SetPlayerSecurityLimit(SEC_ADMINISTRATOR);
         else if (strncmp(param, "reset", l) == 0)
@@ -3792,11 +3796,13 @@ bool ChatHandler::HandleServerPLimitCommand(const char *args)
     char const* secName = "";
     switch (allowedAccountType)
     {
-        case SEC_PLAYER:        secName = "Player";        break;
-        case SEC_MODERATOR:     secName = "Moderator";     break;
-        case SEC_GAMEMASTER:    secName = "Gamemaster";    break;
-        case SEC_ADMINISTRATOR: secName = "Administrator"; break;
-        default:                secName = "<unknown>";     break;
+        case SEC_PLAYER:			secName = "Player";        break;
+        case SEC_VIP:				secName = "Moderator";     break;
+		case SEC_GAMEMASTER:		secName = "Gamemaster";    break;
+        case SEC_HGAMEMASTER:		secName = "Head Gamemaster";    break;
+		case SEC_DEVELOPER:			secName = "Developer";	   break;
+        case SEC_ADMINISTRATOR:		secName = "Administrator"; break;
+        default:					secName = "<unknown>";     break;
     }
 
     PSendSysMessage("Player limits: amount %u, min. security level %s.", pLimit, secName);

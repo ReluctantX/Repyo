@@ -93,14 +93,15 @@ class Gossip_Changer : public CreatureScript
 					Player->ADD_GOSSIP_ITEM(4, "Buy with Vote Coin's (30)", GOSSIP_SENDER_MAIN, 6);
 					Player->PlayerTalkClass->SendGossipMenu(9425, Creature->GetGUID());
 					return true;
+					break;
 
 				case 5:
 					if(Player->HasItemCount(D_TOKEN, RACE_CHANGE_TOKENS_REQUIRED_D))
-					{;
+					{
 						Player->DestroyItemCount(D_TOKEN, RACE_CHANGE_TOKENS_REQUIRED_D, true, false);
 						Player->SetAtLoginFlag(AT_LOGIN_CHANGE_RACE);
 						CharacterDatabase.PExecute("UPDATE characters SET at_login = at_login | '128' WHERE guid = %u", GUID_LOPART(Player->GetGUID()));
-						m_session->SendNotification("Removed x10 [Donation Coin] | Sucess, Please logout to initiate the Race change...");
+						Player->MonsterWhisper("Removed x10 [Donation Coin] | Sucess, Please logout to initiate the Race change...", Player->GetGUID());
 						Player->PlayerTalkClass->SendCloseGossip();
 
 					}
@@ -133,10 +134,11 @@ class Gossip_Changer : public CreatureScript
 					Player->ADD_GOSSIP_ITEM(4, "Buy with Vote Coin's (100)", GOSSIP_SENDER_MAIN, 6);
 					Player->PlayerTalkClass->SendGossipMenu(9425, Creature->GetGUID());
 					return true;
+					break;
 
 				case 8:
 					if(Player->HasItemCount(D_TOKEN, FACTION_CHANGE_TOKENS_REQUIRED_D))
-					{;
+					{
 						Player->DestroyItemCount(D_TOKEN, FACTION_CHANGE_TOKENS_REQUIRED_D, true, false);
 						Player->SetAtLoginFlag(AT_LOGIN_CHANGE_FACTION);
 						CharacterDatabase.PExecute("UPDATE characters SET at_login = at_login | '64' WHERE guid = %u", GUID_LOPART(Player->GetGUID()));
