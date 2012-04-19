@@ -37,17 +37,17 @@ public:
     {
         static ChatCommand gmCommandTable[] =
         {
-            { "chat",           SEC_MODERATOR,      false, &HandleGMChatCommand,              "", NULL },
+            { "chat",           SEC_GAMEMASTER,      false, &HandleGMChatCommand,              "", NULL },
             { "fly",            SEC_ADMINISTRATOR,  false, &HandleGMFlyCommand,               "", NULL },
             { "ingame",         SEC_PLAYER,         true,  &HandleGMListIngameCommand,        "", NULL },
             { "list",           SEC_ADMINISTRATOR,  true,  &HandleGMListFullCommand,          "", NULL },
-            { "visible",        SEC_MODERATOR,      false, &HandleGMVisibleCommand,           "", NULL },
-            { "",               SEC_MODERATOR,      false, &HandleGMCommand,                  "", NULL },
+            { "visible",        SEC_GAMEMASTER,      false, &HandleGMVisibleCommand,           "", NULL },
+            { "",               SEC_GAMEMASTER,      false, &HandleGMCommand,                  "", NULL },
             { NULL,             0,                  false, NULL,                              "", NULL }
         };
         static ChatCommand commandTable[] =
         {
-            { "gm",             SEC_MODERATOR,      false, NULL,                     "", gmCommandTable },
+            { "gm",             SEC_GAMEMASTER,      false, NULL,                     "", gmCommandTable },
             { NULL,             0,                  false, NULL,                               "", NULL }
         };
         return commandTable;
@@ -157,7 +157,7 @@ public:
     {
         ///- Get the accounts with GM Level >0
         PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_SEL_GM_ACCOUNTS);
-        stmt->setUInt8(0, uint8(SEC_MODERATOR));
+        stmt->setUInt8(0, uint8(SEC_GAMEMASTER));
         stmt->setInt32(1, int32(realmID));
         PreparedQueryResult result = LoginDatabase.Query(stmt);
 

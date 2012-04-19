@@ -276,14 +276,24 @@ bool IsPlayerAccount(uint32 gmlevel)
     return gmlevel == SEC_PLAYER;
 }
 
-bool IsModeratorAccount(uint32 gmlevel)
+bool IsVIPAccount(uint32 gmlevel)
 {
-    return gmlevel >= SEC_MODERATOR && gmlevel <= SEC_CONSOLE;
+    return gmlevel >= SEC_VIP && gmlevel <= SEC_CONSOLE;
 }
 
 bool IsGMAccount(uint32 gmlevel)
 {
     return gmlevel >= SEC_GAMEMASTER && gmlevel <= SEC_CONSOLE;
+}
+
+bool IsHeadGMAccount(uint32 gmlevel)
+{
+    return gmlevel >= SEC_HGAMEMASTER && gmlevel <= SEC_CONSOLE;
+}
+
+bool IsDevAccount(uint32 gmlevel)
+{
+    return gmlevel >= SEC_DEVELOPER && gmlevel <= SEC_CONSOLE;
 }
 
 bool IsAdminAccount(uint32 gmlevel)
