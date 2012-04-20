@@ -163,7 +163,7 @@ enum AccountTypes
     SEC_HGAMEMASTER    = 3,
 	SEC_DEVELOPER      = 4,
     SEC_ADMINISTRATOR  = 5,
-    SEC_CONSOLE        = 4,                                  // must be always last in list, accounts must have less security level always also
+    SEC_CONSOLE        = 6,                                  // must be always last in list, accounts must have less security level always also
 };
 
 enum LocaleConstant

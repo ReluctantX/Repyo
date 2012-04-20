@@ -278,7 +278,7 @@ bool IsPlayerAccount(uint32 gmlevel)
 
 bool IsVIPAccount(uint32 gmlevel)
 {
-    return gmlevel >= SEC_VIP && gmlevel <= SEC_CONSOLE;
+    return gmlevel == SEC_PLAYER;
 }
 
 bool IsGMAccount(uint32 gmlevel)
