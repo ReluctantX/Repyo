@@ -225,7 +225,7 @@ public:
             if (handler->GetSession()->GetPlayer()->isGameMaster())
                 handler->GetSession()->SendNotification(LANG_GM_ON);
             else
-                handler->GetSession()->SendNotification(LANG_GM_OFF);
+                handler->GetSession()->SendNotification(LANG_GM_ON);
             return true;
         }
 

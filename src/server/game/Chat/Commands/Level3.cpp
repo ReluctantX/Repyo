@@ -3768,7 +3768,7 @@ bool ChatHandler::HandleServerPLimitCommand(const char *args)
             sWorld->SetPlayerSecurityLimit(SEC_PLAYER);
         else if (strncmp(param, "VIP", l) == 0)
             sWorld->SetPlayerSecurityLimit(SEC_VIP);
-		else if (strncmp(param, "Gamemaster", 1) ==0)
+		else if (strncmp(param, "Gamemaster", 1) == 0)
 			sWorld->SetPlayerSecurityLimit(SEC_GAMEMASTER);
         else if (strncmp(param, "head gamemaster", l) == 0)
             sWorld->SetPlayerSecurityLimit(SEC_HGAMEMASTER);
@@ -3797,7 +3797,7 @@ bool ChatHandler::HandleServerPLimitCommand(const char *args)
     switch (allowedAccountType)
     {
         case SEC_PLAYER:			secName = "Player";        break;
-        case SEC_VIP:				secName = "Moderator";     break;
+        case SEC_VIP:				secName = "Premium Player";     break;
 		case SEC_GAMEMASTER:		secName = "Gamemaster";    break;
         case SEC_HGAMEMASTER:		secName = "Head Gamemaster";    break;
 		case SEC_DEVELOPER:			secName = "Developer";	   break;
