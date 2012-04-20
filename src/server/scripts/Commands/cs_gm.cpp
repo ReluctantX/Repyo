@@ -223,9 +223,9 @@ public:
         if (!*args)
         {
             if (handler->GetSession()->GetPlayer()->isGameMaster())
-                handler->GetSession()->SendNotification(LANG_GM_ON);
+                handler->GetSession()->SendNotification(LANG_GM_OFF);
             else
-                handler->GetSession()->SendNotification(LANG_GM_ON);
+                handler->GetSession()->SendNotification(LANG_GM_OFF);
             return true;
         }
 
