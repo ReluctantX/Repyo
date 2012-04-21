@@ -1231,6 +1231,7 @@ void AddBattlegroundScripts()
 	void AddSC_NPC_Gossip_Changer();
 	void AddSC_BountyHunter();
 	void AddSC_Npc_Beastmaster();
+	void AddSC_NPC_Proff();
 #endif
 
 void AddCustomScripts()
@@ -1240,5 +1241,6 @@ void AddCustomScripts()
 	AddSC_NPC_Gossip_Changer();
 	AddSC_BountyHunter();
 	AddSC_Npc_Beastmaster();
+	AddSC_NPC_Proff();
 #endif
 }
