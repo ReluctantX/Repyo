@@ -13,7 +13,6 @@ set(scripts_STAT_SRCS
   Custom/changer.cpp
   Custom/BountyHunter.cpp
   Custom/Beastmaster.cpp
-  Custom/KillStreak.cpp
 )
 
 message("  -> Prepared: Custom")
