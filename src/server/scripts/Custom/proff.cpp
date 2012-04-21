@@ -32,7 +32,7 @@ class Proff_NPC : public CreatureScript
                                 case 1: // JC
 									{
 										pPlayer->learnSpell(51311, true); //Grand Master JC
-										pPlayer->UpdateSkillPro(51311, 100, 100);
+										pPlayer->UpdateSkillEnchantments(51311, 0, 450);
 									}
                                         break;
 
