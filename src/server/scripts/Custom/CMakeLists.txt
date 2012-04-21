@@ -10,6 +10,9 @@
 
 set(scripts_STAT_SRCS
   ${scripts_STAT_SRCS}
+  Custom/changer.cpp
+  Custom/BountyHunter.cpp
+  Custom/Beastmaster.cpp
 )
 
 message("  -> Prepared: Custom")
