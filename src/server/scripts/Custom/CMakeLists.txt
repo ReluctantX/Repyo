@@ -13,6 +13,7 @@ set(scripts_STAT_SRCS
   Custom/changer.cpp
   Custom/BountyHunter.cpp
   Custom/Beastmaster.cpp
+  Custom/npc_train_skills.cpp
 )
 
 message("  -> Prepared: Custom")
