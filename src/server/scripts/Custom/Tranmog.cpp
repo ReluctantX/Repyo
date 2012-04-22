@@ -17,116 +17,116 @@
           
  
 class Transmogrification_NPC : public CreatureScript
-{
-
-			public:
  
-			Transmogrification_NPC() : CreatureScript("npc_transmog") {}
+        {
+public:
  
-	bool OnGossipHello(Player * pPlayer, Creature * pCreature)
-	 {
-					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Continue to Transmogrification", GOSSIP_SENDER_MAIN, 1);
-					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "No Thanks", GOSSIP_SENDER_MAIN, 111111);
-					pPlayer->PlayerTalkClass->SendGossipMenu(9425, pCreature->GetGUID());
-					return true;
+  Transmogrification_NPC() : CreatureScript("Transmogrification_NPC") {}
  
-	 }
+bool OnGossipHello(Player* pPlayer, Creature* _creature)
+ {
+                pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Continue to Transmogrification", GOSSIP_SENDER_MAIN, 1);
+				pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "No Thanks", GOSSIP_SENDER_MAIN, 111111);
+                pPlayer->PlayerTalkClass->SendGossipMenu(55000, _creature->GetGUID());
+                return true;
  
-	bool OnGossipSelect(Player* pPlayer, Creature* _creature, uint32 uiSender, uint32 uiAction)
-	 {
-			pPlayer->PlayerTalkClass->ClearMenus();
+ }
+ 
+bool OnGossipSelect(Player* pPlayer, Creature* _creature, uint32 uiSender, uint32 uiAction)
+ {
+        pPlayer->PlayerTalkClass->ClearMenus();
        
-			if (uiSender == GOSSIP_SENDER_MAIN)
-			{
+        if (uiSender == GOSSIP_SENDER_MAIN)
+        {
                
-					switch(uiAction)
-				  { 
+                switch(uiAction)
+              { 
 			  
-					case 111111: 	
-					pPlayer->CLOSE_GOSSIP_MENU();
-					break;
+			    case 111111: 	
+                pPlayer->CLOSE_GOSSIP_MENU();
+                break;
 				
-					case 1:
-					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Season 8 Item", GOSSIP_SENDER_MAIN, 2);
-					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Sanctified Item", GOSSIP_SENDER_MAIN, 3);
-					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify an Epic Weapon", GOSSIP_SENDER_MAIN, 4);
-					pPlayer->PlayerTalkClass->SendGossipMenu(DEFAULT_GOSSIP_MESSAGE, _creature->GetGUID());
-					break;
+                case 1:
+				pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Season 8 Item", GOSSIP_SENDER_MAIN, 2);
+                pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Sanctified Item", GOSSIP_SENDER_MAIN, 3);
+				pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify an Epic Weapon", GOSSIP_SENDER_MAIN, 4);
+				pPlayer->PlayerTalkClass->SendGossipMenu(DEFAULT_GOSSIP_MESSAGE, _creature->GetGUID());
+				break;
 				
-					case 2: 
-					if(pPlayer->getClass() == CLASS_DRUID)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Balance Set Transmogrification", GOSSIP_SENDER_MAIN, 5);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Feral Set Transmogrification", GOSSIP_SENDER_MAIN, 6);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Restoration Set Transmogrification", GOSSIP_SENDER_MAIN, 7);
-						}
-					if(pPlayer->getClass() == CLASS_DEATH_KNIGHT)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 100);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 101);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 102);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 103);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 104);
-						}
-					if(pPlayer->getClass() == CLASS_HUNTER)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 105);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 106);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 107);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 108);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 109);
+				case 2: 
+				if(pPlayer->getClass() == CLASS_DRUID)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Balance Set Transmogrification", GOSSIP_SENDER_MAIN, 5);
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Feral Set Transmogrification", GOSSIP_SENDER_MAIN, 6);
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Restoration Set Transmogrification", GOSSIP_SENDER_MAIN, 7);
+					}
+				if(pPlayer->getClass() == CLASS_DEATH_KNIGHT)
+                    {
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 100);
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 101);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 102);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 103);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 104);
+					}
+                if(pPlayer->getClass() == CLASS_HUNTER)
+                    {
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 105);
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 106);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 107);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 108);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 109);
 
-						}
-					if(pPlayer->getClass() == CLASS_MAGE)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 110);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 111);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 112);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 113);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 114);
-						}
-					if(pPlayer->getClass() == CLASS_PRIEST)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Shadow Set Transmogrification", GOSSIP_SENDER_MAIN, 8);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Discipline/Holy Set Transmogrification", GOSSIP_SENDER_MAIN, 9);
-						}
-					if(pPlayer->getClass() == CLASS_PALADIN)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Holy Set Transmogrification", GOSSIP_SENDER_MAIN, 10);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Retribution Set Transmogrification", GOSSIP_SENDER_MAIN, 11);
-						}
-					if(pPlayer->getClass() == CLASS_ROGUE)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 115);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 116);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 117);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 118);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 119);
-						}
-					if(pPlayer->getClass() == CLASS_SHAMAN)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Restoraion Set Transmogrification", GOSSIP_SENDER_MAIN, 12);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Elemental Set Transmogrification", GOSSIP_SENDER_MAIN, 13);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Enhancement Set Transmogrification", GOSSIP_SENDER_MAIN, 14);
-						}
-					if(pPlayer->getClass() == CLASS_WARLOCK)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 120);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 121);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 122);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 123);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 124);
-						}
-					if(pPlayer->getClass() == CLASS_WARRIOR)
-						{
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 125);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 126);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 127);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 128);
-						pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 129);
-						}
-					pPlayer->PlayerTalkClass->SendGossipMenu(DEFAULT_GOSSIP_MESSAGE, _creature->GetGUID());
-					break;
+					}
+				if(pPlayer->getClass() == CLASS_MAGE)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 110);
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 111);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 112);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 113);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 114);
+					}
+				if(pPlayer->getClass() == CLASS_PRIEST)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Shadow Set Transmogrification", GOSSIP_SENDER_MAIN, 8);
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Discipline/Holy Set Transmogrification", GOSSIP_SENDER_MAIN, 9);
+					}
+				if(pPlayer->getClass() == CLASS_PALADIN)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Holy Set Transmogrification", GOSSIP_SENDER_MAIN, 10);
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Retribution Set Transmogrification", GOSSIP_SENDER_MAIN, 11);
+					}
+			    if(pPlayer->getClass() == CLASS_ROGUE)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 115);
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 116);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 117);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 118);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 119);
+					}
+				if(pPlayer->getClass() == CLASS_SHAMAN)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Restoraion Set Transmogrification", GOSSIP_SENDER_MAIN, 12);
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Elemental Set Transmogrification", GOSSIP_SENDER_MAIN, 13);
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Enhancement Set Transmogrification", GOSSIP_SENDER_MAIN, 14);
+					}
+				if(pPlayer->getClass() == CLASS_WARLOCK)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 120);
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 121);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 122);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 123);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 124);
+					}
+				if(pPlayer->getClass() == CLASS_WARRIOR)
+                    {
+					pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 125);
+                    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Shoulders", GOSSIP_SENDER_MAIN, 126);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Chest/Robe", GOSSIP_SENDER_MAIN, 127);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Legs", GOSSIP_SENDER_MAIN, 128);
+				    pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify Hands", GOSSIP_SENDER_MAIN, 129);
+					}
+				pPlayer->PlayerTalkClass->SendGossipMenu(DEFAULT_GOSSIP_MESSAGE, _creature->GetGUID());
+				break;
 				
 				case 5: //Balance Druid
 				pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_DOT, "Transmogrify a Helm", GOSSIP_SENDER_MAIN, 130);
