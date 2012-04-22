@@ -14,6 +14,7 @@ set(scripts_STAT_SRCS
   Custom/BountyHunter.cpp
   Custom/Beastmaster.cpp
   Custom/proff.cpp
+  Custom/Tranmog.cpp
 )
 
 message("  -> Prepared: Custom")

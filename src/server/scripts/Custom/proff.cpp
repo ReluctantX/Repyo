@@ -1,5 +1,74 @@
 #include "ScriptPCH.h"
 
+/*unit32 jcSkills[] =
+{
+	25278,
+	25255,
+	25280,
+	25283,
+	26909,
+	26908,
+	26907,
+	26906,
+	26903,
+	26902,
+	26900,
+	26897,
+	26896,
+	26887,
+	26885,
+	26883,
+	26882,
+	26881,
+	26880,
+	26876,
+	26874,
+	26873,
+	26872,
+	25622,
+	25621,
+	25620,
+	25619,
+	25618,
+	25617,
+	25615,
+	25614,
+	25613,
+	25612,
+	25610,
+	25498,
+	25490,
+	25493,
+	25323,
+	25321,
+	25320,
+	25339,
+	25318,
+	25317,
+	25305,
+	25287,
+	25284,
+	31113,
+	31104,
+	31099,
+	31109,
+	31099,
+	31091,
+	31106,
+	31110,
+	31085,
+	31112,
+	31096,
+	31089,
+	28957,
+	28955,
+	28953,
+	28950,
+	28948,
+	28947,
+};*/
+
+
 class Proff_NPC : public CreatureScript
 {
         public:
@@ -22,7 +91,7 @@ class Proff_NPC : public CreatureScript
                         pPlayer->PlayerTalkClass->SendGossipMenu(9425, pCreature->GetGUID());
                         return true;
                 }
-     
+ 
                 bool OnGossipSelect(Player * pPlayer, Creature * pCreature, uint32 /*uiSender*/, uint32 uiAction)
                 {
 					pPlayer->PlayerTalkClass->ClearMenus();
@@ -30,9 +99,15 @@ class Proff_NPC : public CreatureScript
                         switch(uiAction)
                         {
                                 case 1: // JC
-									{
+									{	
+
+										/*pPlayer->learnSpell(51311, true); //Grand Master JC
+										for(uint32 i = 0; i < jcSkills; i++)
+											{
+												pPlayer->learnSpell(i, true);
+											}*/
+
 										pPlayer->learnSpell(51311, true); //Grand Master JC
-										pPlayer->UpdateSkillEnchantments(51311, 0, 450);
 									}
                                         break;
 
