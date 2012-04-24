@@ -43,9 +43,9 @@ public:
     {
         static ChatCommand debugPlayCommandTable[] =
         {
-            { "cinematic",      SEC_MODERATOR,      false, &HandleDebugPlayCinematicCommand,   "", NULL },
-            { "movie",          SEC_MODERATOR,      false, &HandleDebugPlayMovieCommand,       "", NULL },
-            { "sound",          SEC_MODERATOR,      false, &HandleDebugPlaySoundCommand,       "", NULL },
+            { "cinematic",      SEC_GAMEMASTER,      false, &HandleDebugPlayCinematicCommand,   "", NULL },
+            { "movie",          SEC_GAMEMASTER,      false, &HandleDebugPlayMovieCommand,       "", NULL },
+            { "sound",          SEC_GAMEMASTER,      false, &HandleDebugPlaySoundCommand,       "", NULL },
             { NULL,             SEC_PLAYER,     false, NULL,                               "", NULL }
         };
         static ChatCommand debugSendCommandTable[] =
@@ -76,7 +76,7 @@ public:
             { "getvalue",       SEC_ADMINISTRATOR,  false, &HandleDebugGetValueCommand,        "", NULL },
             { "getitemvalue",   SEC_ADMINISTRATOR,  false, &HandleDebugGetItemValueCommand,    "", NULL },
             { "Mod32Value",     SEC_ADMINISTRATOR,  false, &HandleDebugMod32ValueCommand,      "", NULL },
-            { "play",           SEC_MODERATOR,      false, NULL,              "", debugPlayCommandTable },
+            { "play",           SEC_GAMEMASTER,      false, NULL,              "", debugPlayCommandTable },
             { "send",           SEC_ADMINISTRATOR,  false, NULL,              "", debugSendCommandTable },
             { "setaurastate",   SEC_ADMINISTRATOR,  false, &HandleDebugSetAuraStateCommand,    "", NULL },
             { "setitemvalue",   SEC_ADMINISTRATOR,  false, &HandleDebugSetItemValueCommand,    "", NULL },
@@ -88,13 +88,14 @@ public:
             { "update",         SEC_ADMINISTRATOR,  false, &HandleDebugUpdateCommand,          "", NULL },
             { "itemexpire",     SEC_ADMINISTRATOR,  false, &HandleDebugItemExpireCommand,      "", NULL },
             { "areatriggers",   SEC_ADMINISTRATOR,  false, &HandleDebugAreaTriggersCommand,    "", NULL },
-            { "los",            SEC_MODERATOR,      false, &HandleDebugLoSCommand,             "", NULL },
+            { "los",            SEC_GAMEMASTER,      false, &HandleDebugLoSCommand,             "", NULL },
             { "moveflags",      SEC_ADMINISTRATOR,  false, &HandleDebugMoveflagsCommand,       "", NULL },
             { NULL,             SEC_PLAYER,         false, NULL,                               "", NULL }
         };
         static ChatCommand commandTable[] =
         {
-            { "debug",          SEC_MODERATOR,      true,  NULL,                  "", debugCommandTable },
+            { "debug",          SEC_GAMEMASTER,      true,  NULL,                  "", debugCommandTable },
+            { "wpgps",          SEC_ADMINISTRATOR,  false, &HandleWPGPSCommand,                "", NULL },
             { NULL,             SEC_PLAYER,         false, NULL,                  "",              NULL }
         };
         return commandTable;
@@ -1317,6 +1318,16 @@ public:
             handler->PSendSysMessage(LANG_MOVEFLAGS_SET, target->GetUnitMovementFlags(), target->GetExtraUnitMovementFlags());
         }
 
+        return true;
+    }
+
+    static bool HandleWPGPSCommand(ChatHandler* handler, char const* /*args*/)
+    {
+        Player* player = handler->GetSession()->GetPlayer();
+
+        sLog->outSQLDev("(@PATH, XX, %.3f, %.3f, %.5f, 0,0, 0,100, 0),", player->GetPositionX(), player->GetPositionY(), player->GetPositionZ());
+
+        handler->PSendSysMessage("Waypoint SQL written to SQL Developer log");
         return true;
     }
 };
